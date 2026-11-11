@@ -111,7 +111,7 @@ Decide after the Nov 18 peer test.
 | Headless Chromium at 1280px and 375px: no sideways scroll on A, B or résumé | passed |
 | Text contrast, both themes (WCAG AA 4.5:1), computed from the CSS colours | passed after fix (see below) |
 | RPS Chaos suite referenced on the site: 115 unit/API tests | passed |
-| `npm run check:links` (every external link returns < 400) | runs in GitHub Actions on each push; see the Actions tab |
+| `npm run check:links` (every external link returns < 400) | passed: 14 of 14 links OK in [Actions run 43050370974](https://github.com/GaretJax6905/portfolio/actions/runs/43050370974); LinkedIn not added yet |
 | Screen reader pass | not run yet |
 | Peer task | not run yet (Nov 18; use the "Peer review observation" issue template) |
 
