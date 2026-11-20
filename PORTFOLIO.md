@@ -122,7 +122,7 @@ unreadable. Fixed by applying `color`/`background` on `.site`; re-checked by scr
 ratios. The agent's first Story 4 test also broke once a Contact section repeated the profile links;
 I changed it to check the first-screen copy, which is what the story is about.
 
-**Still incomplete (labelled on the site):** LinkedIn URL, public contact email, ECC start year on the
+**Still incomplete (labelled on the site):** LinkedIn URL, public contact email, the
 résumé, my exact slice in the group project, and a cleaned public version of the lab script.
 
 **Peer observation:** pending. On Nov 18 a classmate gets this task, without coaching: "Find my individual

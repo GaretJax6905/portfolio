@@ -158,12 +158,12 @@ export const otherWork: Link[] = [
 ];
 
 export const resume = {
-  // TODO(Tom): add your start year at ECC and check every bullet is accurate.
+  // TODO(Tom): check every bullet is accurate.
   experience: [
     {
       title: 'Technical Support Specialist, Academic Computing',
       org: 'Essex County College, Newark, NJ',
-      dates: '[start year] – present',
+      dates: 'July 2021 – present',
       bullets: [
         'Deploy and maintain software on student lab computers, including Autodesk, Office LTSC, developer tools and virtual machines on new Dell all-in-ones.',
         'Joined lab computers to the college lab domain and moved the labs from SmartShield to Deep Freeze Enterprise.',
