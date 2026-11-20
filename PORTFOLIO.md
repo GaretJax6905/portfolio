@@ -122,9 +122,25 @@ unreadable. Fixed by applying `color`/`background` on `.site`; re-checked by scr
 ratios. The agent's first Story 4 test also broke once a Contact section repeated the profile links;
 I changed it to check the first-screen copy, which is what the story is about.
 
-**Still incomplete (labelled on the site):** LinkedIn URL, public contact email, the
+**Still incomplete (labelled on the site):** public contact email, the
 résumé, my exact slice in the group project, and a cleaned public version of the lab script.
 
 **Peer observation:** pending. On Nov 18 a classmate gets this task, without coaching: "Find my individual
 project, tell me what I did in the group project, then find my code, résumé and professional profiles."
 Record it with the **Peer review observation** issue template, make one change, and retest.
+
+### Update (Nov 20, 2026): visual identity for Layout A and current RPS Chaos facts
+
+- **Decision:** Layout A gets an "arcade terminal" identity (dark navy, cyan/magenta neon, monospace
+  section labels, numbered sections, an "evidence at a glance" strip). It matches the retro neon games I build
+  and makes A distinct from B's GitHub-style build log. Compared against a peer's research site
+  (moo29-sketch/ml-engineer-career-research), which reads as a designed product; mine read as a plain document.
+- **Kept readable on purpose:** body text 1.05rem, labels at least 0.85rem, all accent colours well above
+  WCAG AA on the dark background. (Small 9–10px labels were the main issue I reported on the peer's site.)
+- **Evidence strip is computed from `content.ts`**, so its numbers can't drift from the case studies.
+- **RPS Chaos case study updated** to the shipped accounts slice: 124 tests, the account-journey check,
+  pull request #6, and new limits (saved runs reset on redeploy; no account maintenance or CSRF yet).
+- **LinkedIn link added** (Nov 20). The link checker skips LinkedIn's bot-block status (999), so it is checked by hand.
+- **Checked:** `npm test` 20/20 passed; `tsc` passed; production build passed; headless Chromium
+  screenshots at 1280px and 375px with no sideways scroll. **Not run:** axe contrast in a real browser,
+  screen reader pass.

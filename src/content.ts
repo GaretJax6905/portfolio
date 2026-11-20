@@ -46,8 +46,7 @@ export const profile = {
   links: {
     github: { label: 'GitHub', href: GITHUB },
     repo: { label: 'This site’s code', href: `${GITHUB}/portfolio` },
-    // TODO(Tom): paste your own LinkedIn URL. Until then the link is labelled as missing.
-    linkedin: { label: 'LinkedIn', href: '' },
+    linkedin: { label: 'LinkedIn', href: 'https://www.linkedin.com/in/thomas-moylan-7b7b10258/' },
   },
   // TODO(Tom): choose a public contact address (not your work email unless you mean to).
   email: '',
@@ -60,7 +59,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'RPS Chaos',
     status: 'working',
     summary:
-      'Rock Paper Scissors as a boss-rush arcade game: five bosses, a pattern-learning final boss (ORACLE) and online rooms.',
+      'Rock Paper Scissors as a boss-rush arcade game: five bosses, a pattern-learning final boss (ORACLE), online rooms, and accounts that save every finished run.',
     problem:
       'Turn a small class lab into a game people replay, with an AI opponent that is fair: it must not be able to see your move.',
     decisions: [
@@ -70,28 +69,36 @@ export const caseStudies: CaseStudy[] = [
     ],
     myPart: 'Solo project. I designed the game, directed the coding agent, reviewed its changes and wrote the plan.',
     aiUse: {
-      draft: 'A coding agent wrote most of the first versions of the bosses, rooms and front end.',
+      draft: 'A coding agent wrote most of the first versions of the bosses, rooms and front end, and the first accounts slice.',
       checked:
-        'I check each change against automated tests and by playing it. Next experiment: I predicted the agent will miss duplicate-save protection and signing out other sessions after a password change when it builds accounts.',
-      result: 'Accounts slice in progress. The two prediction tests are written into the plan but not run yet.',
+        'I check each change against automated tests and by playing it. For accounts I made the agent prove two risks I predicted: a finished run must save only once, and the browser must not be able to send its own score.',
+      result:
+        'Both are now tests that pass: a unique run id per account blocks double saves, and the server computes the score from its own game state.',
     },
     checks: [
       {
-        name: '115 unit and API tests (pytest)',
+        name: '124 unit, API and account tests (pytest)',
         result: 'passed',
-        date: 'Nov 11, 2026',
+        date: 'Nov 20, 2026',
         href: `${GITHUB}/rps-chaos/tree/main/tests`,
+      },
+      {
+        name: 'Account journey: sign up → finish a run → saved once → reopen after restart → sign out',
+        result: 'passed',
+        date: 'Nov 20, 2026',
+        href: `${GITHUB}/rps-chaos/blob/main/tests/test_accounts.py`,
       },
       {
         name: 'GitHub Actions on every push (includes 8 Playwright browser journeys)',
         result: 'passed',
         href: `${GITHUB}/rps-chaos/actions/workflows/python.yml`,
       },
-      { name: 'Account journey tests (sign up → saved run → dashboard)', result: 'not run yet' },
+      { name: 'Account journey in a real browser on the live site', result: 'not run yet' },
     ],
     limits: [
       'Free hosting: the first visit after a quiet spell takes 30–60 seconds to wake up.',
-      'Accounts and saved scores are planned, not built yet.',
+      'Saved runs live in SQLite on a free host, so they reset when the site redeploys. A hosted database is next.',
+      'Changing your name or password and CSRF protection are not built yet.',
     ],
     learned:
       'Putting the rules on the server made the agent’s mistakes easy to catch, because the tests talk to one API instead of the UI.',
@@ -100,7 +107,7 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Repository', href: `${GITHUB}/rps-chaos` },
       { label: 'Latest checks', href: `${GITHUB}/rps-chaos/actions/workflows/python.yml` },
       { label: 'Project record (SPEC.md)', href: `${GITHUB}/rps-chaos/blob/main/SPEC.md` },
-      { label: 'Plan pull request #4', href: `${GITHUB}/rps-chaos/pull/4` },
+      { label: 'Accounts pull request #6', href: `${GITHUB}/rps-chaos/pull/6` },
     ],
   },
   {

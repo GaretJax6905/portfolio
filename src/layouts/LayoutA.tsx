@@ -2,16 +2,33 @@ import { caseStudies, otherWork } from '../content';
 import { CompareNote, Contact } from '../components/Compare';
 import { CheckLine, Intro, LinkOut, ProfileLinks, StatusBadge } from '../components/Shared';
 
+const allChecks = caseStudies.flatMap((c) => c.checks);
+const stats = [
+  { value: caseStudies.length, label: 'case studies' },
+  { value: allChecks.filter((k) => k.result === 'passed').length, label: 'checks passed' },
+  { value: allChecks.filter((k) => k.result === 'not run yet').length, label: 'checks still to run' },
+  { value: otherWork.length, label: 'more builds' },
+];
+
 /** A · Grid & evidence: sticky intro on the left, scannable case studies on the right. */
 export default function LayoutA() {
   return (
     <div className="layout-a">
       <aside className="a-side">
+        <p className="eyebrow">Player 1 · Ready</p>
         <Intro />
         <ProfileLinks />
       </aside>
       <div className="a-main">
-        <h2>Case studies</h2>
+        <ul className="stat-strip" aria-label="Evidence at a glance">
+          {stats.map((s) => (
+            <li key={s.label}>
+              <strong>{s.value}</strong> <span>{s.label}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="eyebrow">01 / Case studies</p>
+        <h2>What I built, and how I checked it</h2>
         {caseStudies.map((c) => (
           <article key={c.id} id={c.id} className="a-card" aria-labelledby={`${c.id}-a`}>
             <p className="kind">
@@ -58,14 +75,16 @@ export default function LayoutA() {
             <p>{c.learned}</p>
           </article>
         ))}
+        <p className="eyebrow">02 / More builds</p>
         <h2>Other work</h2>
-        <ul>
+        <ul className="other-work">
           {otherWork.map((l) => (
             <li key={l.href}>
               <LinkOut link={l} />
             </li>
           ))}
         </ul>
+        <p className="eyebrow">03 / Contact</p>
         <Contact />
         <CompareNote />
       </div>

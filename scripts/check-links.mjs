@@ -11,6 +11,11 @@ let failed = 0;
 for (const url of urls) {
   try {
     const res = await fetch(url, { method: 'GET', redirect: 'follow', signal: AbortSignal.timeout(90_000) });
+    // LinkedIn answers bots with 999; that means "blocked", not "broken", so check it by hand.
+    if (res.status === 999 && url.includes('linkedin.com')) {
+      console.log(`skip 999 ${url} (LinkedIn blocks automated checks; verify manually)`);
+      continue;
+    }
     const ok = res.status < 400;
     if (!ok) failed++;
     console.log(`${ok ? 'ok  ' : 'FAIL'} ${res.status} ${url}`);
